@@ -112,7 +112,8 @@ namespace Simpleverse.Repository.Db.Test.SqlServer
 						[From] NVARCHAR(MAX) NULL,
 						[Enum] INT NULL,
 						[Guid] UNIQUEIDENTIFIER NULL,
-						[DateTime] DATETIME NULL
+						[DateTime] DATETIME NULL,
+						[Bool] BIT NOT NULL DEFAULT 0
 					);");
 
 				connection.Execute(

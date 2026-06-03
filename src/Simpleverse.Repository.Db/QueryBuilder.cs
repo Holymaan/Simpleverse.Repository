@@ -509,6 +509,20 @@ namespace Simpleverse.Repository.Db
 
 		#endregion
 
+		#region WhereOr
+
+		public QueryBuilder<TTable> WhereOr(Action<WhereOrBuilder<TTable>> builderAction)
+		{
+			var orBuilder = new WhereOrBuilder<TTable>(Table);
+			builderAction(orBuilder);
+			var (sql, parameters) = orBuilder.Build();
+			if (sql != null)
+				Where(sql, parameters);
+			return this;
+		}
+
+		#endregion
+
 		#endregion
 
 		#region Set

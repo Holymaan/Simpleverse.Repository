@@ -438,6 +438,20 @@ namespace Simpleverse.Repository.Db.Extensions.Dapper
 
 		#endregion
 
+		#region WhereOr
+
+		public static SqlBuilder WhereOr<TTable>(this SqlBuilder builder, Table<TTable> table, Action<WhereOrBuilder<TTable>> builderAction)
+		{
+			var orBuilder = new WhereOrBuilder<TTable>(table);
+			builderAction(orBuilder);
+			var (sql, parameters) = orBuilder.Build();
+			if (sql != null)
+				builder.Where(sql, parameters);
+			return builder;
+		}
+
+		#endregion
+
 		public static IDictionary<string, object> Parameter(string parameterName, object value)
 		{
 			IDictionary<string, object> parameter = new ExpandoObject();

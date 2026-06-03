@@ -87,7 +87,8 @@ namespace Simpleverse.Repository.Db.Test
 					Name = x.ToString(),
 					Enum = x % 2 == 0 ? Enum.Even : Enum.Odd,
 					Guid = Guid.NewGuid(),
-					DateTime = DateTime.Today
+					DateTime = DateTime.Today,
+					Bool = x % 2 == 0
 				},
 				count
 			);
@@ -201,6 +202,8 @@ namespace Simpleverse.Repository.Db.Test
 		public Guid Guid { get; set; }
 
 		public DateTime DateTime { get; set; }
+
+		public bool Bool { get; set; }
 	}
 
 	[Table("DataType")]
